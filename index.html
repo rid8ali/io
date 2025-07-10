@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rida Uppal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      color: #f5f5f5;
+      font-family: 'Inconsolata', monospace;
+      font-size: 18px;
+      padding: 2rem;
+    }
+
+    .datetime {
+      text-align: center;
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 3rem;
+    }
+
+    #intro {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: baseline;
+      /* baseline align */
+      gap: 0.5rem;
+      justify-content: flex-start;
+      /* left align */
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .arrow {
+      cursor: pointer;
+      font-weight: normal;
+      font-size: 1.7rem;
+      user-select: none;
+      display: none;
+      color: #9ad0ec;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+
+    .arrow:hover {
+      color: #6bb1e7;
+    }
+
+    .content {
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: normal;
+      text-align: left;
+    }
+
+    .quote {
+      border-left: 4px solid #bbb;
+      padding-left: 1rem;
+      margin: 2rem 0 1rem 0;
+      color: #bbb;
+      font-style: italic;
+      white-space: pre-wrap;
+    }
+
+    .skip-message {
+      border-left: 4px solid #555;
+      padding-left: 1rem;
+      margin: 0.5rem 0 1rem 0;
+      color: #555;
+      font-style: italic;
+      font-size: 0.85em;
+      user-select: none;
+      white-space: pre-wrap;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    a {
+      color: #9ad0ec;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .line {
+      margin-bottom: 0.7rem;
+      white-space: pre-wrap;
+    }
+
+    .subtle {
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    /* spacing for sections */
+    .section-spacer {
+      margin-top: 2rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #f5f5f5;
+      animation: blink 1s steps(1) infinite;
+      vertical-align: bottom;
+      margin-left: 2px;
+      height: 1.2em;
+    }
+
+    @keyframes blink {
+
+      0%,
+      50% {
+        opacity: 1;
+      }
+
+      50.01%,
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="datetime">
+    <div id="clock">--:--:--</div>
+    <div id="date">Loading date…</div>
+  </div>
+
+  <div id="intro">
+    <span id="name"></span>
+    <span class="arrow" id="arrow">→</span>
+  </div>
+
+  <div class="content" id="content"></div>
+
+  <script>
+    function updateClockAndDate() {
+      const now = new Date();
+      document.getElementById('clock').textContent = now.toLocaleTimeString();
+      document.getElementById('date').textContent = now.toLocaleDateString(undefined, {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      });
+    }
+    setInterval(updateClockAndDate, 1000);
+    updateClockAndDate();
+
+    const contentData = [
+      { type: "div", className: "subtle", text: "IB Student @ Gar-Field Senior High School, Woodbridge, VA" },
+      {
+        type: "quote", className: "subtle", text: "\"The price of doing the same old thing is far higher than the price of change.\" - Bill Clinton"
+
+      },
+
+      { type: "section", text: "currently:" },
+      { type: "line", text: "- running an economics YouTube channel", link: "https://www.youtube.com/@professoreck" },
+      { type: "line", text: "- conducting independent research and coding my findings" },
+      { type: "line", text: "- developing an interactive financial literacy game" },
+      { type: "line", text: "- outlining a book on economic history and inequality" },
+
+      { type: "section", text: "projects:" },
+      {
+        type: "line",
+        text: "- Education Spending & Poverty",
+        link: "https://colab.research.google.com/drive/1sKrBLNgCfK17jXNo0jhicJfX9TLilK_1?usp=sharing"
+      },
+      {
+        type: "line", text: "Analyzed the link between state education funding per student and poverty levels beyond all 50 U.S. states. Researched whether more education funding leads to lower poverty rates in the states. Developed a linear model using Python, which revealed a profound negative relationship, providing insight regarding how state investments affect institutional outcomes."
+      },
+      {
+      type: "line",
+      text: "- Minimum Wage vs Average Monthly Rent",
+      link: "https://colab.research.google.com/drive/1O0UQrvDpj15HSR9kTdYpJt5VPI3XX-w1?usp=sharing"
+      },
+      {
+        type: "line", text: "Investigated whether current state-level minimum wages allow workers to afford the median rent across all 50 U.S. states. Gathered clean public data using Microsoft Excel and coded the affordability gap model in Python. The model reveals that in most states, a full-time minimum wage worker must work 160+ hours to afford the average rent – underlining the major divide between affordable housing and minimum wage. The model provides a compelling evidence of labor burden and economic disparity in the U.S."
+      },
+
+      { type: "section", text: "digital shelf:" },
+      { type: "line", text: "- Poor Economics by Abhijit Banerjee & Esther Duflo" },
+      { type: "line", text: "- Inside Job (documentary on the 2008 financial crisis)", link: "https://www.youtube.com/watch?v=T2IaJwkqgPk" },
+      { type: "line", text: "- Capital in the Twenty-First Century by Thomas Piketty" },
+      { type: "line", text: "- Money, Power, and Wall Street (PBS Frontline)", link: "https://www.youtube.com/watch?v=W-Q9AOp2FW8" }
+    ];
+
+    const nameEl = document.getElementById("name");
+    const arrow = document.getElementById("arrow");
+    const contentContainer = document.getElementById("content");
+
+    let skipAll = false;
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function typeText(element, text, link) {
+      if (link) {
+        const a = document.createElement("a");
+        a.href = link;
+        a.target = "_blank";
+        element.appendChild(a);
+        element = a;
+      }
+
+      const cursor = document.createElement("span");
+      cursor.className = "cursor";
+      element.appendChild(cursor);
+
+      for (let i = 0; i < text.length; i++) {
+        if (skipAll) {
+          element.insertBefore(document.createTextNode(text.slice(i)), cursor);
+          break;
+        }
+        element.insertBefore(document.createTextNode(text.charAt(i)), cursor);
+        await sleep(20); // a bit faster for smoothness
+      }
+      cursor.remove();
+    }
+
+    function createElement(type, className) {
+      let el;
+      if (type === "h1") el = document.createElement("h1");
+      else if (type === "quote") el = document.createElement("div");
+      else el = document.createElement("div");
+
+      if (className) el.className = className;
+
+      if (type === "quote") el.classList.add("quote");
+      return el;
+    }
+
+    async function typeAllContent() {
+      for (const item of contentData) {
+        if (skipAll) break;
+
+        let el;
+
+        if (item.type === "section") {
+          el = document.createElement("div");
+          el.className = "section-spacer";
+          contentContainer.appendChild(el);
+          if (skipAll) {
+            el.textContent = item.text;
+            continue;
+          }
+          await typeText(el, item.text);
+          continue;
+        }
+
+        el = createElement(item.type, item.className);
+        contentContainer.appendChild(el);
+
+        // Show "Press Enter to skip" message below current line while typing
+        const skipMsg = document.createElement("div");
+        skipMsg.className = "skip-message";
+        skipMsg.textContent = "Press Enter to skip";
+        contentContainer.appendChild(skipMsg);
+
+        await typeText(el, item.text, item.link);
+
+        // Remove skip message after line finishes typing
+        skipMsg.remove();
+
+        // Small pause between lines for buttery smoothness
+        await sleep(120);
+      }
+      const existingSkip = document.querySelector(".skip-message");
+      if (existingSkip) existingSkip.remove();
+    }
+
+    async function typeName() {
+      const text = "Rida Uppal";
+      for (let i = 0; i < text.length; i++) {
+        if (skipAll) {
+          nameEl.textContent = text;
+          break;
+        }
+        nameEl.textContent += text.charAt(i);
+        await sleep(40);
+      }
+      arrow.style.display = "inline";
+    }
+
+    arrow.addEventListener("click", () => {
+      arrow.style.display = "none";
+      typeAllContent();
+    });
+
+    window.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        skipAll = true;
+
+        nameEl.textContent = "Rida Uppal";
+        arrow.style.display = "none";
+
+        contentContainer.innerHTML = "";
+
+        for (const item of contentData) {
+          let el;
+          if (item.type === "section") {
+            el = document.createElement("div");
+            el.className = "section-spacer";
+            el.textContent = item.text;
+          } else {
+            el = createElement(item.type, item.className);
+            if (item.link) {
+              const a = document.createElement("a");
+              a.href = item.link;
+              a.target = "_blank";
+              a.textContent = item.text;
+              el.appendChild(a);
+            } else {
+              el.textContent = item.text;
+            }
+          }
+          contentContainer.appendChild(el);
+        }
+
+        const existingSkip = document.querySelector(".skip-message");
+        if (existingSkip) existingSkip.remove();
+      }
+    });
+
+    typeName();
+  </script>
+</body>
+
+</html>

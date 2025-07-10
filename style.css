@@ -1,0 +1,120 @@
+
+body {
+  margin: 0;
+  font-family: 'Fira Mono', monospace;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode (default) */
+body {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #0a0f14;
+  color: #f4f1ed;
+}
+
+body.dark-mode a {
+  color: #9ad0ec;
+}
+
+body a {
+  color: #0066cc;
+  transition: color 0.3s ease;
+}
+
+header {
+  text-align: center;
+  padding: 2rem;
+}
+
+.name-info {
+  padding-left: 1rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  color: #666;
+  text-align: left;
+}
+
+.name-info h1 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: inherit;
+}
+
+.name-info p {
+  margin: 0.5rem 0;
+}
+
+body.dark-mode .name-info {
+  color: #888;
+}
+
+.datetime {
+  margin-bottom: 1rem;
+}
+
+.date {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-bottom: 0.2rem;
+}
+
+.clock {
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+.quote {
+  border-left: 3px solid #999;
+  padding-left: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  color: #666;
+}
+
+body.dark-mode .quote {
+  color: #bfbfbf;
+}
+
+.section {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+}
+
+#quote {
+  margin: 1rem auto;
+}
+
+
+
+.dark-mode-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid #ccc;
+  color: inherit;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: 'Fira Mono', monospace;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  border-color: #999;
+}
+
+body.dark-mode .dark-mode-toggle {
+  border-color: #666;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+  border-color: #9ad0ec;
+}
